@@ -1,8 +1,9 @@
 ROOT := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-OUTPUT := $(ROOT)/tbwgame
+OUTPUT := $(ROOT)/tbwgame.o
 
 CC := clang++
-CCFLAGS := -I$(ROOT)/include/
+CCFLAGS := -I$(ROOT)/include/ \
+	-c
 
 SOURCES := $(shell find $(ROOT)/game/ -type f -name '*.cpp')
 
