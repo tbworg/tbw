@@ -6,14 +6,19 @@ RAYVER := 5.0
 UPSTREAM := https://github.com/raysan5/raylib/releases/download/$(RAYVER)/raylib-$(RAYVER)_linux_amd64.tar.gz
 ARCHIVE := raylib_linux_amd64.tar.gz
 
+ARENALIB := arena.so
+GAMEOBJNAME := tbwgame.o
+OUTPUTNAME := tbwgame
+
 ROOT := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 LD := clang
 LDFLAGS := -L$(ROOT)/Arena/raylib/lib/ \
-	-lraylib
+	-lraylib \
+	$(ROOT)/Arena/$(ARENALIB)
 
-GAMEOBJ := $(ROOT)/spgame/tbwgame.o
-OUTPUT := $(ROOT)/tbwgame
+GAMEOBJ := $(ROOT)/spgame/$(GAMEOBJNAME)
+OUTPUT := $(ROOT)/$(OUTPUTNAME)
 
 .PHONY: $(OUTPUT) link
 
