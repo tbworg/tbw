@@ -26,9 +26,10 @@ spgame_build:
 	@cd $(ROOT)/spgame/ && make
 
 run:
-	@$(ROOT)/spgame/tbwgame
+	export LD_LIBRARY_PATH=$(ROOT)/lib/:$$LD_LIBRARY_PATH && $(ROOT)/tbwgame
 
 link: $(OUTPUT)
+	@cp $(ROOT)/Arena/raylib/lib/libraylib.so* $(ROOT)/lib/
 
 $(OUTPUT):
 	$(LD) $(LDFLAGS) $(GAMEOBJ) -o $(OUTPUT)
