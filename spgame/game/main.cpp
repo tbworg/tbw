@@ -2,6 +2,7 @@
 #include <arena.hpp>
 
 int main(int argc, char *argv[]) {
-    arena_test();
+    EngineInstance *instance = Arena::NewInstance(WIDTH, HEIGHT, TITLE);
+    instance->GameLoop();
     return 0;
 }

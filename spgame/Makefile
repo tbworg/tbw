@@ -18,3 +18,4 @@ $(OUTPUT): $(SOURCES)
 
 clean:
 	@rm $(OUTPUT)
+	

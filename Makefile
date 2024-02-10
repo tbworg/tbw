@@ -12,7 +12,7 @@ OUTPUTNAME := tbwgame
 
 ROOT := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
-LD := clang
+LD := clang++
 LDFLAGS := -L$(ROOT)/Arena/raylib/lib/ \
 	-lraylib \
 	$(ROOT)/Arena/$(ARENALIB)
@@ -31,7 +31,7 @@ spgame_build:
 	@cd $(ROOT)/spgame/ && make
 
 run:
-	export LD_LIBRARY_PATH=$(ROOT)/lib/:$$LD_LIBRARY_PATH && $(ROOT)/tbwgame
+	export LD_LIBRARY_PATH=$(ROOT)/lib/:$$LD_LIBRARY_PATH && $(OUTPUT)
 
 link: $(OUTPUT)
 	@cp $(ROOT)/Arena/raylib/lib/libraylib.so* $(ROOT)/lib/
@@ -50,3 +50,8 @@ deps:
 	@tar -xzf $(ARCHIVE) -C $(ROOT)/Arena/raylib/ || { echo "Error extracting archive."; exit 1; }
 	@find $(ROOT)/Arena/raylib/ -mindepth 1 -maxdepth 1 -type d -exec sh -c 'mv "$$1"/* "$$1"/.. && rm -r "$$1"' _ {} \;
 	@rm $(ARCHIVE)
+
+clean:
+	-@cd $(ROOT)/Arena/ && make clean 2> /dev/null
+	-@cd $(ROOT)/spgame/ && make clean 2> /dev/null
+	-@rm $(OUTPUT) 2> /dev/null
