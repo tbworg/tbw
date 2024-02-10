@@ -1,3 +1,4 @@
 [submodule "Arena"]
 	path = Arena
 	url = https://github.com/tbworg/Arena.git
+	branch = main
