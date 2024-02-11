@@ -1,3 +1,12 @@
-R 0 0 1920 1080 211 211 211 100 0
-R 0 400 1000 200 128 128 128 100 1
-R -40 0 50 1080 211 211 211 100 1
+PLAYER 20 400 20 20 200 350 C 255 0 0 255
+
+BG C 211 211 211 100                            ; Lightgray background
+BG T 0
+
+DRAW R 0 0 100 100 T 0 true
+DRAW R 0 400 1000 200 C 128 128 128 120 true
+DRAW R -40 0 40 1080 C 0 0 0 0 true                ; Transparent border before the first block
+DRAW R 1100 300 500 200 C 255 0 0 120 true
+DRAW R 1700 200 500 200 C 0 255 0 120 true
+
+;; DRAW R -3840 -2160 7680 4320 C 0 0 0 255 false
